@@ -2,9 +2,13 @@
 import re
 import os
 
+# class Artwork:
+# 	def __init__(self, title, price):
+# 		self.title = title
+# 		self.price = price
+
 Path = "data/2015-03-18/"
 filelist = os.listdir(Path)
-i = 0
 dic = {}
 for file in filelist:
     if file.endswith(".html") and file.startswith("lot"): 
@@ -22,19 +26,24 @@ for file in filelist:
 			elif num == 2:
 				reobj = re.search( r'<h3>(.*?)</h3>', line)
 				if reobj:
-					dic[artist].append('\''+reobj.group(1)+'\'')
+					title = '\''+reobj.group(1)+'\''
 					num += 1
+			elif num == 3:
+				reobj = re.search( r'<div>(.*?)</div>', line)
+				if reobj:
+					price = '\''+reobj.group(1)+'\''
+					dic[artist].append({'title': title, 'price': price})
 					break
 			line = fh.readline()
         fh.close()
-
-
 
 print "["
 for artist in dic.keys():
 	print '\t{'
 	print '\t\tartist: '+artist+','
-	print '\t\tworks: ['+', '.join(dic[artist])+'],'
+	print '\t\tworks: ['
+	for work in dic[artist]:
+		print '\t\t\t{ title: '+work['title']+', price: '+work['price']+' },' 
 	print '\t},'
 print "]"
  # exit;
