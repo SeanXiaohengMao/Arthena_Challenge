@@ -5,11 +5,6 @@ import locale
 
 locale.setlocale( locale.LC_ALL, 'en_US.UTF-8' ) 
 
-# class Artwork:
-# 	def __init__(self, title, price):
-# 		self.title = title
-# 		self.price = price
-
 Path = "data/2017-12-20/"
 filelist = os.listdir(Path)
 dic = {}
