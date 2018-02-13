@@ -29,10 +29,11 @@ for file in filelist:
 					title = '\''+reobj.group(1)+'\''
 					num += 1
 			elif num == 3:
-				reobj = re.search( r'<div>(.*?)</div>', line)
+				reobj = re.search( r'<div>(.*?) (.*?)</div>', line)
 				if reobj:
-					price = '\''+reobj.group(1)+'\''
-					dic[artist].append({'title': title, 'price': price})
+					currency = '\''+reobj.group(1)+'\''
+					amount = '\''+reobj.group(2)+'\''
+					dic[artist].append({'title': title, 'currency': currency, 'amount': amount})
 					break
 			line = fh.readline()
         fh.close()
@@ -41,10 +42,11 @@ print "["
 for artist in dic.keys():
 	print '\t{'
 	print '\t\tartist: '+artist+','
-	print '\t\tworks: ['
+	print '\t\tworks:',
 	for work in dic[artist]:
-		print '\t\t\t{ title: '+work['title']+', price: '+work['price']+' },' 
-	print '\t\t],'
+		print '['
+		print '\t\t\t{ title: '+work['title']+', currency: '+work['currency']+', amount: '+work['amount']+' },' 
+		print '\t\t],'
 	print '\t},'
 print "]"
  # exit;
