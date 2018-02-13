@@ -44,6 +44,7 @@ for artist in dic.keys():
 	print '\t\tworks: ['
 	for work in dic[artist]:
 		print '\t\t\t{ title: '+work['title']+', price: '+work['price']+' },' 
+	print '\t\t],'
 	print '\t},'
 print "]"
  # exit;
