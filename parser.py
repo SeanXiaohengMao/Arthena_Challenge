@@ -5,18 +5,18 @@ import locale
 
 locale.setlocale( locale.LC_ALL, 'en_US.UTF-8' ) 
 
-'''
- Define 2 dictionaries to save the data,
- dic is dictionary of artist: works, 
- dicValue is dictionary of artist: totalValue.
-'''
+# '''
+#  Define 2 dictionaries to save the data,
+#  dic is dictionary of artist: works, 
+#  dicValue is dictionary of artist: totalValue.
+# '''
 dic = {}	
 dicValue = {}	
 
-''' 
- Parse the documents,
- open the documents in the loop
-'''
+# ''' 
+#  Parse the documents,
+#  open the documents in the loop
+# '''
 Path = "data/2017-12-20/"
 filelist = os.listdir(Path)
 for file in filelist:	
@@ -69,10 +69,10 @@ for file in filelist:
 			line = fh.readline()
 		fh.close()
 
-'''
- Print the dictionaries.
- Structure the results into the format.
-'''
+# '''
+#  Print the dictionaries.
+#  Structure the results into the format.
+# '''
 print "["
 for ia, artist in enumerate(dic.keys()):
 	print '    {'
